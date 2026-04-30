@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TermoCalc </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>TermoCalc <span style="font-weight: 300; font-size: 1rem;">| Dashboard de Termodinâmica</span></h1>
+</header>
+
+<div class="main-wrapper">
+    <div class="sidebar">
+        <div class="card">
+            <h3>⚙️ Material</h3>
+            <select id="seletorMaterial" onchange="aoMudarMaterial()">
+                <option value="">A carregar...</option>
+            </select>
+            
+            <div class="prop-selector">
+                <button class="prop-btn active" onclick="setProp('G', this)">G (kJ/mol)</button>
+                <button class="prop-btn" onclick="setProp('H', this)">H (kJ/mol)</button>
+                <button class="prop-btn" onclick="setProp('S', this)">S (J/mol·K)</button>
+                <button class="prop-btn" onclick="setProp('Cp', this)">Cp (J/mol·K)</button>
+            </div>
+        </div>
+
+        <div class="card" style="flex-grow: 1;">
+            <h3>🧪 Fases</h3>
+            <div id="listaFases" class="fases-grid"></div>
+            <button onclick="plotarGrafico()" style="margin-top:10px; background: var(--accent); color:white; font-weight:bold; border:none;">PLOTAR</button>
+        </div>
+    </div>
+
+    <div class="content card">
+        <div class="chart-container">
+            <canvas id="mainChart"></canvas>
+        </div>
+    </div>
+
+    <div class="technical-data card">
+        <h3>📊 Parâmetros de Shomate (NIST)</h3>
+        <div class="table-wrapper" id="tabelaDados">
+            <p style="color:#888; font-size:0.8rem;">Selecione um material para ver os coeficientes.</p>
+        </div>
+        <div style="font-size: 0.65rem; color: #7f8c8d; margin-top: 10px; line-height: 1.2;">
+            * t = T / 1000 <br>
+            * Cp = A + Bt + Ct² + Dt³ + E/t² <br>
+            * H° - H°₂₉₈ = At + Bt²/2 + Ct³/3 + Dt⁴/4 - E/t + F <br>
+            * S° = A ln(t) + Bt + Ct²/2 + Dt³/3 - E/(2t²) + G
+        </div>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+    :root { 
+            --primary: #1a2a3a; --accent: #3498db; 
+            --bg: #f4f7f9; --card-bg: #ffffff; 
+        }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            margin: 0; background-color: var(--bg); color: #333;
+        }
+
+        header { 
+            background: var(--primary); color: white; padding: 1rem 2rem; 
+            text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Layout de 3 Colunas: Sidebar (300px) | Gráfico (Flex) | Dados (400px) */
+        .main-wrapper { 
+            display: grid;
+            grid-template-columns: 300px 1fr 400px;
+            gap: 15px; 
+            padding: 15px; 
+            height: calc(100vh - 100px);
+        }
+
+        .card { 
+            background: var(--card-bg); padding: 18px; border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e1e4e8;
+            display: flex; flex-direction: column;
+        }
+
+        .sidebar { gap: 15px; }
+        .content { min-width: 0; } /* Previne que o gráfico quebre o grid */
+        
+        h3 { margin: 0 0 12px 0; font-size: 1rem; color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 5px; }
+
+        select, button { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccd1d9; font-size: 0.95rem; }
+        
+        .prop-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin: 10px 0; }
+        .prop-btn { padding: 6px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 0.8rem; border-radius: 4px; }
+        .prop-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .fases-grid { flex-grow: 1; overflow-y: auto; background: #f9f9f9; padding: 10px; border-radius: 6px; border: 1px solid #eee; }
+        .fase-badge { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 0.85rem; }
+
+        /* Tabela Técnica à Direita */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto; /* Ativa scroll horizontal apenas na tabela */
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.65rem; /* Fonte reduzida para caber mais dados */
+            table-layout: auto; /* Permite que as colunas se ajustem ao conteúdo */
+            min-width: 650px;   /* Garante que os números não fiquem sobrepostos */
+        }
+
+        th, td {
+            padding: 6px 3px;   /* Padding compacto */
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            white-space: nowrap; /* Impede que os números quebrem linha */
+        }
+
+        th {
+            background: #f8f9fa;
+            color: var(--primary);
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+            position: sticky;
+            left: 0;
+            background: #fff; /* Mantém o nome da fase visível ao dar scroll */
+            z-index: 1;
+        }
+
+        .chart-container { flex-grow: 1; position: relative; }
+
+        @media (max-width: 1200px) {
+            .main-wrapper { grid-template-columns: 250px 1fr; }
+            .technical-data { grid-column: span 2; height: 300px; }
+        }
