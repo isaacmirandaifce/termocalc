@@ -161,6 +161,20 @@
         "link": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7440326&Mask=2#Thermo-Condensed",
         "descricao": "NIST WebBook Auto-Import",
         "fases": {
+            "Gas": {
+                "t_min": 3630.956,
+                "t_max": 6000.000,
+                "coefs": {
+                    "A": 9.27425,
+                    "B": 6.092113,
+                    "C": 0.577095,
+                    "D": -0.110364,
+                    "E": 6.504405,
+                    "F": 483.0093,
+                    "G": 204.1566,
+                    "H": 473.6288
+                }
+            },
             "Liquid": {
                 "t_min": 1939.0,
                 "t_max": 3630.956,
